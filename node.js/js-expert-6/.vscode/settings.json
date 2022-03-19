@@ -1,0 +1,16 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.fixAll.eslint": true
+  },
+  "eslint.options": {
+    "extensions": [
+      ".js",
+    ]
+  },
+  "editor.formatOnSave": true,
+  "editor.tabCompletion": "on",
+  "html.format.maxPreserveNewLines": 2,
+  "javascript.validate.enable": true,
+  "javascript.format.enable": true,
+}
