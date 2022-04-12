@@ -27,5 +27,6 @@ export default class Product {
         this.#isValid(data)
         const message = await this.service.save(data)
         return message.toUpperCase()
+        this.source.emit('create')
     }
 }
