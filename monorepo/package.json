@@ -1,0 +1,19 @@
+{
+  "name": "monorepo",
+  "version": "1.0.0",
+  "description": "fullstack workspace",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "ISC",
+  "workspaces": [
+    "src/apps/frontend/landingpage",
+    "src/apps/frontend/admin",
+    "src/apps/frontend/shared",
+    "src/apps/backend/emails",
+    "src/apps/backend/api",
+    "src/apps/backend/shared",
+    "src/packages"
+  ]
+}
