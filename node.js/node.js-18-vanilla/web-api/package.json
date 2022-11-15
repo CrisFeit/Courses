@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "description": "Vanilla Node.js Rest API",
   "main": "index.js",
+  "type": "module",
   "directories": {
     "test": "tests"
   },
   "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
