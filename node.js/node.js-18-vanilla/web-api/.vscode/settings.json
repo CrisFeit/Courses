@@ -1,0 +1,8 @@
+{
+  "editor.formatOnSave": true,
+  "editor.tabCompletion": "on",
+  "editor.wordWrap": "on",
+  "editor.wordWrapColumn": 80,
+  "editor.guides.bracketPairs": "active",
+  "editor.bracketPairColorization.enabled": true,
+}
