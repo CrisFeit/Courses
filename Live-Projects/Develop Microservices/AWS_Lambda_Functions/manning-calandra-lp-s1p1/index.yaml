@@ -1,0 +1,77 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: This application will create the resources that needs to be present to successfully complete the Manning LiveProject called "Develop Lambda Functions to handle application logic" (s1p1).
+Transform:
+- AWS::Serverless-2016-10-31
+Parameters:
+  ProjectLabel:
+    Type: String
+    Default: S1P1
+Resources:
+  BookHotelFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName:
+        Fn::Sub: BookHotelServer${ProjectLabel}
+      Handler: src/book-hotel.handler
+      Runtime: nodejs14.x
+      MemorySize: 128
+      Timeout: 1
+      Description: Simulate the third party service that handle hotel booking
+      Policies:
+      - AWSLambdaBasicExecutionRole
+      Events:
+        BookHotelApi:
+          Type: Api
+          Properties:
+            Path: /hotel
+            Method: post
+      CodeUri:
+        Bucket: <%REPO_BUCKET%>
+        Key: 573fd4d5-5f9d-4d86-ad5b-aac99b6ba185
+  CancelHotelFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName:
+        Fn::Sub: CancelHotelServer${ProjectLabel}
+      Handler: src/cancel-hotel.handler
+      Runtime: nodejs14.x
+      MemorySize: 128
+      Timeout: 1
+      Description: Simulate the third party service that handle hotel booking cancelation
+      Policies:
+      - AWSLambdaBasicExecutionRole
+      Events:
+        BookHotelApi:
+          Type: Api
+          Properties:
+            Path: /hotel
+            Method: delete
+      CodeUri:
+        Bucket: <%REPO_BUCKET%>
+        Key: 573fd4d5-5f9d-4d86-ad5b-aac99b6ba185
+  BookMuseumFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName:
+        Fn::Sub: BookMuseumServer${ProjectLabel}
+      Handler: src/book-museum.handler
+      Runtime: nodejs14.x
+      MemorySize: 128
+      Timeout: 1
+      Description: Simulate the third party service that handle museum booking
+      Policies:
+      - AWSLambdaBasicExecutionRole
+      Events:
+        BookMuseumApi:
+          Type: Api
+          Properties:
+            Path: /museum
+            Method: post
+      CodeUri:
+        Bucket: <%REPO_BUCKET%>
+        Key: 573fd4d5-5f9d-4d86-ad5b-aac99b6ba185
+Outputs:
+  BookingApiEndpoint:
+    Description: Endpoint of 3rd parties booking services (hotel and museum)
+    Value:
+      Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/

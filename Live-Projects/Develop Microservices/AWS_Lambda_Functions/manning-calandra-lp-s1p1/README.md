@@ -1,0 +1,1 @@
+This application will create the environment that needs to be present to successfully complete the Manning LiveProject called **"Develop Lambda Functions to handle application logic"**.

@@ -1,0 +1,83 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: >-
+  This application will create the resources that needs to be present to successfully complete the Manning LiveProject called "Develop Lambda Functions to handle application logic" (s1p1).
+
+Transform:
+- AWS::Serverless-2016-10-31
+Metadata:
+  AWS::ServerlessRepo::Application:
+    Name: manning-calandra-lp-s1p1
+    Description: This application will create the resources that needs to be present to successfully complete the Manning LiveProject called "Develop Lambda Functions to handle application logic" (s1p1).
+    Author: Mariano Calandra
+    ReadmeUrl: README.md
+    Labels: ['Manning', 'live-project']
+    SpdxLicenseId: Apache-2.0
+    LicenseUrl: LICENSE.md
+    HomePageUrl: https://liveproject.manning.com/
+    SourceCodeUrl: https://liveproject.manning.com/
+    SemanticVersion: 1.0.0
+
+Parameters:
+  ProjectLabel:
+    Type: String
+    Default: "S1P1"
+
+Resources:
+  BookHotelFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub 'BookHotelServer${ProjectLabel}'
+      Handler: src/book-hotel.handler
+      Runtime: nodejs14.x
+      MemorySize: 128
+      Timeout: 1
+      Description: Simulate the third party service that handle hotel booking
+      Policies:
+        - AWSLambdaBasicExecutionRole
+      Events:
+        BookHotelApi:
+          Type: Api
+          Properties:
+            Path: /hotel
+            Method: post
+
+  CancelHotelFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub 'CancelHotelServer${ProjectLabel}'
+      Handler: src/cancel-hotel.handler
+      Runtime: nodejs14.x
+      MemorySize: 128
+      Timeout: 1
+      Description: Simulate the third party service that handle hotel booking cancelation
+      Policies:
+        - AWSLambdaBasicExecutionRole
+      Events:
+        BookHotelApi:
+          Type: Api
+          Properties:
+            Path: /hotel
+            Method: delete
+
+  BookMuseumFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub 'BookMuseumServer${ProjectLabel}'
+      Handler: src/book-museum.handler
+      Runtime: nodejs14.x
+      MemorySize: 128
+      Timeout: 1
+      Description: Simulate the third party service that handle museum booking
+      Policies:
+        - AWSLambdaBasicExecutionRole
+      Events:
+        BookMuseumApi:
+          Type: Api
+          Properties:
+            Path: /museum
+            Method: post
+
+Outputs:
+  BookingApiEndpoint:
+    Description: Endpoint of 3rd parties booking services (hotel and museum)
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/"

@@ -1,0 +1,13 @@
+{
+  "name": "manning-calandra-lp-s1p1",
+  "description": "This application will create the resources that needs to be present to successfully complete the Manning LiveProject called \"Develop Lambda Functions to handle application logic\" (s1p1).",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+      "sam-package": "sam package --template-file template.yml --output-template-file packageds1p1.yaml --s3-bucket aws-sam-cli-managed-default-samclisourcebucket-bg8jw08e6fi0 --profile personale",
+      "sam-deploy": "sam deploy --template-file packageds1p1.yaml",
+      "sam-publish": "sam publish --template packageds1p1.yaml --region eu-west-1 --profile personale && sam publish --template packageds1p1.yaml --region us-east-1 --profile personale",
+      "deploy": "npm install && sam build && npm run sam-package && npm run sam-deploy",
+      "publish": "npm install && sam build && npm run sam-package && npm run sam-publish"
+  }
+}

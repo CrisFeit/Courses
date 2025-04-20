@@ -1,0 +1,9 @@
+manningcalandralps1p1:
+  Type: AWS::Serverless::Application
+  Properties:
+    Location:
+      ApplicationId: arn:aws:serverlessrepo:eu-west-1:782313859016:applications/manning-calandra-lp-s1p1
+      SemanticVersion: 1.0.0
+    Parameters:
+      # ProjectLabel: 'S1P1' # Uncomment to override default value
+      

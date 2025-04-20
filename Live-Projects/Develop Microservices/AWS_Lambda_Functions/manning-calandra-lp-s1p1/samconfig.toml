@@ -1,0 +1,10 @@
+version = 0.1
+[default]
+[default.deploy]
+[default.deploy.parameters]
+stack_name = "manning-calandra-lp-s1p1"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-bg8jw08e6fi0"
+s3_prefix = "manning-external-ws"
+region = "eu-west-1"
+profile = "personale"
+capabilities = "CAPABILITY_IAM"

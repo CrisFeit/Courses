@@ -1,0 +1,33 @@
+{
+  "files.associations": {
+    ".prettierrc": "yaml"
+  },
+  "[handlebars]": {
+    "editor.formatOnSave": false
+  },
+  "editor.formatOnSave": true,
+  "editor.tabCompletion": "on",
+  "editor.wordWrap": "on",
+  "editor.wordWrapColumn": 80,
+  "editor.guides.bracketPairs": "active",
+  "editor.bracketPairColorization.enabled": true,
+  "material-icon-theme.files.associations": {
+    "adapters": "contract",
+    "grcp": "pipe",
+    "kube": "kubernetes",
+    "main": "lib",
+    "websocket": "pipe",
+    "websockets": "pipe",
+    "implementation": "core"
+  },
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "node_modules": true,
+    // "coverage": true,
+  },
+}

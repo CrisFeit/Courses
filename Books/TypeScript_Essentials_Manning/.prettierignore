@@ -1,0 +1,7 @@
+# Ignore :
+out
+dist
+build
+.next
+node_modules
+coverage
